@@ -153,4 +153,43 @@ document.addEventListener("DOMContentLoaded", () => {
     a.click();
     document.body.removeChild(a);
   });
+
+  function addDebtToTable(debt, index) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        ${debt.datePlaced}<br />
+        <span style="color: #6c757d; font-size: 0.8em">Updated: ${debt.updatedDate}</span>
+      </td>
+      <td>${debt.debt}</td>
+      <td>
+        <div class="amount-container">
+          ${debt.amount}
+          <i class="fas fa-info-circle"></i>
+          <div class="tooltip">${debt.desc}</div>
+        </div>
+      </td>
+      <td class="action-buttons">
+        <button class="edit-button">Edit</button>
+        <button class="delete-button">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(row);
+
+    row.querySelector(".edit-button").addEventListener("click", () => {
+      openModal(debt, index);
+    });
+
+    row.querySelector(".delete-button").addEventListener("click", () => {
+      deleteDebt(index);
+      row.remove();
+    });
+
+    // Toggle the display of the tooltip on click in mobile view
+    row.querySelector(".fa-info-circle").addEventListener("click", () => {
+      const tooltip = row.querySelector(".tooltip");
+      tooltip.style.display =
+        tooltip.style.display === "block" ? "none" : "block";
+    });
+  }
 });
