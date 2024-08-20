@@ -5,9 +5,14 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: chap;
+  src: url(/Chap-Regular.ttf);
+}
+
 /* Body styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: chap;
   background-color: #f8f9fa;
   color: #343a40;
   padding: 20px;
