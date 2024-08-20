@@ -34,13 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 
-  // Search form submission event
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const query = searchForm.querySelector('input[name="query"]').value;
-    filterDebts(query);
-  });
-
   // Save changes to the debt
   saveChangesButton.addEventListener("click", () => {
     if (currentDebtIndex !== undefined) {
@@ -193,16 +186,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(registration => {
-          console.log('Service Worker registered with scope:', registration.scope);
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((registration) => {
+          console.log(
+            "Service Worker registered with scope:",
+            registration.scope
+          );
         })
-        .catch(err => {
-          console.error('Service Worker registration failed:', err);
+        .catch((err) => {
+          console.error("Service Worker registration failed:", err);
         });
     });
   }
-  
+
+  const amountIcons = document.querySelectorAll(".amount-icon");
+
+  amountIcons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      const container = icon.parentElement;
+      const tooltip = container.querySelector(".tooltip");
+      tooltip.style.display =
+        tooltip.style.display === "block" ? "none" : "block";
+    });
+  });
+
+  // Optionally, hide tooltips when clicking outside
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".amount-container")) {
+      document.querySelectorAll(".tooltip").forEach((tooltip) => {
+        tooltip.style.display = "none";
+      });
+    }
+  });
+
+  //search
+
+  const searchInput = document.getElementById("searchInput");
+  const debtsTable = document.getElementById("debtsTable");
+  const tableRows = document.querySelectorAll("tbody tr");
+
+  function performSearch(query) {
+    query = query.toLowerCase(); // Convert query to lowercase for case-insensitive search
+
+    tableRows.forEach((row) => {
+      const debtorCell = row.querySelector("td:nth-child(2)"); // Adjust selector if needed
+      const debtorText = debtorCell.textContent.toLowerCase();
+
+      if (debtorText.includes(query)) {
+        row.style.display = ""; // Show the row
+      } else {
+        row.style.display = "none"; // Hide the row
+      }
+    });
+  }
+
+  searchInput.addEventListener("input", () => {
+    performSearch(searchInput.value);
+  });
+
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission if inside a form
+      performSearch(searchInput.value);
+    }
+  });
 });

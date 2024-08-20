@@ -1,11 +1,10 @@
 const CACHE_NAME = 'debt-app-cache-v1';
 const urlsToCache = [
   '/',
-  '/index.html',
+  '/indx.html',
   '/styles.css',   // Add all your CSS files
   '/app.js',    // Add all your JS files
-  '/images/icon-192x192.png', // Icons
-  '/images/icon-512x512.png'
+  '/images/logo.png', // Icons
 ];
 
 self.addEventListener('install', event => {

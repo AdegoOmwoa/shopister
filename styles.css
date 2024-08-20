@@ -1,62 +1,84 @@
+/* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body styling */
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
   color: #343a40;
-  padding: 10px;
+  padding: 20px;
 }
 
-.form,
-.search-form {
+/* Form styling */
+.form, .search-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 10px; /* Space between elements */
   margin-bottom: 20px;
 }
 
-.form input,
-.search-form input {
-  padding: 10px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  flex: 1;
-  max-width: 200px;
+.form {
+  justify-content: center;
 }
 
-.form button,
-.search-form button {
-  max-width: 100px;
+.form input, .search-container input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
   width: 100%;
-  margin: 5px;
-  padding: 10px;
-  border-radius: 5px;
+  max-width: 300px; /* Adjust width as needed */
+}
+
+.form button, .search-container button {
+  padding: 12px 20px;
   border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 6px;
   background-color: #007bff;
   color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.form button:hover,
-.search-form button:hover {
+.form button:hover, .search-container button:hover {
   background-color: #0056b3;
 }
 
+/* Search container styling */
+.search-container {
+  position: relative;
+}
+
+#searchInput {
+  padding-right: 40px; /* Space for the icon */
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #007bff;
+  pointer-events: none;
+}
+
+/* Container styling */
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -64,56 +86,26 @@ table {
   border: 1px solid #ddd;
 }
 
-th,
-td {
-  padding: 10px;
+th, td {
+  padding: 12px;
   border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
   text-align: left;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #f8f9fa;
+  font-weight: bold;
 }
 
-th:last-child,
-td:last-child {
+th:last-child, td:last-child {
   border-right: none;
 }
 
-.amount-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.amount-container i {
-  margin-left: 10px;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.tooltip {
-  display: none;
-  position: absolute;
-  top: 25px;
-  left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 10;
-  width: 200px;
-}
-
-.amount-container:hover .tooltip {
-  display: block;
-}
-
+/* Action buttons styling */
 .action-buttons {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .action-buttons button {
@@ -130,6 +122,7 @@ td:last-child {
   color: #fff;
 }
 
+/* Modal styling */
 .modal {
   position: fixed;
   top: 0;
@@ -146,78 +139,70 @@ td:last-child {
 .modal-content {
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 500px;
 }
 
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.modal-content h2 {
+  margin-bottom: 20px;
 }
 
-.save-button {
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.modal-content button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#saveChanges {
   background-color: #28a745;
   color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.cancel-button {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.save-button:hover {
+#saveChanges:hover {
   background-color: #218838;
 }
 
-.cancel-button:hover {
-  background-color: #bd2130;
-}
-
-.upload-button {
-  padding: 10px 20px;
-  border: none;
+#cancelEdit {
+  background-color: #dc3545;
   color: #fff;
-  border-radius: 5px;
-  background-color: #28a745;
-  cursor: pointer;
 }
 
+#cancelEdit:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
   .container {
     padding: 15px;
     margin: 10px;
   }
 
-  table th,
-  table td {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .form input,
-  .search-form input {
-    max-width: 100%;
-  }
-
-  .form,
-  .search-form {
+  .form, .search-container {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .form button,
-  .search-form button {
+  .form input, .search-container input {
+    max-width: 100%;
+  }
+
+  .form button, .search-container button {
     max-width: 100%;
     margin: 10px 0;
   }
@@ -232,22 +217,45 @@ td:last-child {
   }
 }
 
+/* Container for amount and icon in the "Amount" column */
+.amount-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.amount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.amount-icon {
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* Amount container styling */
 .amount-container {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.amount-container i {
-  margin-left: 10px;
+/* Icon styling */
+.amount-icon {
+  font-size: 16px;
   color: #007bff;
   cursor: pointer;
+  margin-left: 10px;
 }
 
+/* Tooltip styling */
 .tooltip {
   display: none;
   position: absolute;
-  top: 25px;
+  top: 25px; /* Adjust as needed */
   left: 0;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -256,17 +264,43 @@ td:last-child {
   padding: 10px;
   z-index: 10;
   width: 200px;
+  font-size: 14px;
+  color: #343a40;
 }
 
-.amount-container:hover .tooltip {
+/* Display tooltip when active class is added */
+.amount-container.active .tooltip {
   display: block;
 }
 
-/* Ensure the tooltip remains visible on click in mobile view */
-@media (max-width: 768px) {
-  .tooltip {
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Add some spacing above the button group */
+}
+
+.upload-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.upload-button:hover {
+  background-color: #218838;
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.upload-button:active {
+  background-color: #1e7e34;
+  transform: scale(1); /* Reset scale when button is clicked */
+}
+
+.upload-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Add custom focus outline */
 }
