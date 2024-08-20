@@ -54,12 +54,10 @@ body {
 }
 
 .container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 
 table {
@@ -362,3 +360,39 @@ td:last-child {
     transform: translateX(-50%);
   }
 }
+
+/* Reduce the width of the action buttons column */
+.action-buttons {
+  width: 80px; /* Adjust width as needed */
+  text-align: center;
+}
+
+/* Ensure the buttons fit within the reduced column */
+.action-buttons button {
+  padding: 5px 10px; /* Adjust padding to fit within the smaller column */
+  font-size: 12px; /* Adjust font size to fit within the smaller column */
+}
+
+/* Adjust the width of the action column on smaller screens */
+@media screen and (max-width: 600px) {
+  .action-buttons {
+    width: 60px; /* Further reduce width for smaller screens */
+  }
+
+  .action-buttons button {
+    padding: 3px 5px; /* Further reduce padding for smaller screens */
+    font-size: 10px; /* Further reduce font size for smaller screens */
+  }
+}
+
+/* General table styling for responsiveness */
+table {
+  width: 100%;
+  table-layout: auto; /* Allows the table to adjust column widths automatically */
+}
+
+th, td {
+  padding: 8px;
+  word-wrap: break-word; /* Ensures text wraps within the cell */
+}
+
