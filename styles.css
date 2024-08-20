@@ -19,7 +19,7 @@ body {
   padding: 10px;
 }
 
-/* Form and search form styling */
+/* Form styling */
 .form, .search-form {
   display: flex;
   flex-wrap: wrap;
@@ -74,6 +74,7 @@ th, td {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
   text-align: left;
+  vertical-align: middle;
   word-wrap: break-word;
 }
 
@@ -123,16 +124,20 @@ th:last-child, td:last-child {
   align-items: center;
   justify-content: center;
   width: 80px;
+  height: 100%;
 }
 
 .action-buttons button {
-  margin-right: 5px;
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 12px;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .action-buttons button:hover {
@@ -140,6 +145,7 @@ th:last-child, td:last-child {
   color: #fff;
 }
 
+/* Responsive adjustments for smaller screens */
 @media screen and (max-width: 600px) {
   .action-buttons {
     width: 60px;
@@ -148,8 +154,6 @@ th:last-child, td:last-child {
   .action-buttons button {
     padding: 3px 5px;
     font-size: 10px;
-    margin-bottom: 5px;
-    width: 100%;
   }
 
   .form, .search-form {
