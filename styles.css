@@ -130,17 +130,18 @@ td:last-child {
   color: #fff;
 }
 
-.modal {
-  position: fixed;
-  top: 0;
+#editModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+  justify-content: center; /* Center the modal horizontally */
+  align-items: center; /* Center the modal vertically */
 }
 
 .modal-content {
