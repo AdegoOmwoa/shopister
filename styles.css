@@ -127,7 +127,7 @@ th:last-child, td:last-child {
   color: #fff;
 }
 
-/* Modal styling */
+/* Modal overlay styling */
 .modal {
   position: fixed;
   top: 0;
@@ -139,32 +139,55 @@ th:last-child, td:last-child {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  opacity: 0; /* Initial opacity */
+  pointer-events: none; /* Prevent interactions when hidden */
+  transition: opacity 0.3s ease;
 }
 
+/* Modal content styling */
 .modal-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   max-width: 500px;
+  width: 90%;
+  transform: scale(0.8); /* Start with a scaled-down size */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* Show modal */
+.modal.show {
+  display: flex;
+  opacity: 1; /* Fade in */
+  pointer-events: auto; /* Allow interactions */
+}
+
+.modal.show .modal-content {
+  transform: scale(1); /* Scale to full size */
+}
+
+/* Modal header */
 .modal-content h2 {
+  font-size: 24px;
   margin-bottom: 20px;
+  color: #333;
 }
 
-.modal-content input {
+/* Modal input fields */
+.modal-content input[type="number"],
+.modal-content input[type="text"] {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 16px;
 }
 
+/* Buttons in modal */
 .modal-content button {
-  padding: 12px 20px;
+  padding: 10px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -190,6 +213,7 @@ th:last-child, td:last-child {
 #cancelEdit:hover {
   background-color: #c82333;
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 600px) {

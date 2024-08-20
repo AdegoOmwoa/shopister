@@ -253,4 +253,24 @@ document.addEventListener("DOMContentLoaded", () => {
       performSearch(searchInput.value);
     }
   });
+
+  // Function to show the modal
+function showModal() {
+  const modal = document.getElementById('editModal');
+  modal.classList.add('show');
+}
+
+// Function to hide the modal
+function hideModal() {
+  const modal = document.getElementById('editModal');
+  modal.classList.remove('show');
+}
+
+// Example of showing the modal
+document.getElementById('showModalButton').addEventListener('click', showModal);
+
+// Example of hiding the modal
+document.getElementById('saveChanges').addEventListener('click', hideModal);
+document.getElementById('cancelEdit').addEventListener('click', hideModal);
+
 });
