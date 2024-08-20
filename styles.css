@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: chap;
+  src: url(./Chap-Regular.ttf);
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: chap;
   background-color: #f8f9fa;
   color: #343a40;
   padding: 10px;
@@ -130,6 +135,7 @@ td:last-child {
   color: #fff;
 }
 
+/* Modal overlay */
 #editModal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -139,10 +145,95 @@ td:last-child {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
-  justify-content: center; /* Center the modal horizontally */
-  align-items: center; /* Center the modal vertically */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
+
+/* Modal content */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  font-family: chap;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal header */
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Modal input fields */
+#editModal input[type="number"],
+#editModal input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Buttons in modal */
+#editModal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#saveChanges {
+  background-color: #28a745;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+#saveChanges:hover {
+  background-color: #218838;
+}
+
+#cancelEdit {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+#cancelEdit:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .modal-content {
+    padding: 20px;
+    max-width: 90%;
+    margin: 20px;
+  }
+}
+
 
 .modal-content {
   background-color: #fff;
